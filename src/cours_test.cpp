@@ -23,7 +23,6 @@ int main()
     if (!music.openFromFile("nice_music.ogg"))
         return EXIT_FAILURE;
 
-    // Play the music
     music.play();
 
     // Start the game loop
