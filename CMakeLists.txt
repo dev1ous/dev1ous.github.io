@@ -12,23 +12,7 @@ endif()
 
 project("cours_test")
 
-find_package(SFML COMPONENTS system window graphics audio CONFIG REQUIRED)
-
-file(GLOB SRC_DIR "${CMAKE_SOURCE_DIR}/src/*.cpp")
-
-add_executable (${PROJECT_NAME} ${SRC_DIR})
-
-target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
-target_include_directories(${PROJECT_NAME} PUBLIC
-	${CMAKE_SOURCE_DIR}/include
-)
-target_link_directories(${PROJECT_NAME} PRIVATE
-    sfml-audio
-	sfml-system
-	sfml-graphics
-	sfml-window
-	sfml-network
-)
+add_subdirectory(src)
 
 option(BUILD_DOC "Build documentation" ON)
 
@@ -48,3 +32,4 @@ if (DOXYGEN_FOUND)
 else (DOXYGEN_FOUND)
   message("Doxygen need to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
+
