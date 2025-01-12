@@ -1,2 +1,0 @@
-OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc_doxygen/
-INPUT                  = @CMAKE_SOURCE_DIR@/src/ @CMAKE_SOURCE_DIR@/include/
