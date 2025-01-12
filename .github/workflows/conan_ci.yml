@@ -1,0 +1,48 @@
+name: cours_test
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup up Conan
+      run: | 
+        python -m pip install --upgrade pip 
+        pip install conan
+
+    - name: Set up Conan profile
+      run: |
+          conan profile detect
+
+    - name: Install dependencies with Conan
+      working-directory: ${{github.workspace}}
+      run: | 
+        conan install . --build=missing --output-folder=build --settings=build_type=${{env.BUILD_TYPE}} --conf=tools.cmake.cmaketoolchain:generator=Ninja
+
+    - name: Configure CMake
+      working-directory: ${{github.workspace}}
+      run: |
+        cmake -S . -B build `
+        -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} `
+        -DCMAKE_TOOLCHAIN_FILE="${{env.BINARY_DIR}}/generators/conan_toolchain.cmake"
+      shell: pwsh
+
+    - name: Build
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: Run
+      working-directory: ${{github.workspace}}/build/src/${{env.BUILD_TYPE}}
+      run: |
+        start /b .\cours_test.exe
+        timeout /t 5
+        taskkill /f /im cours_test.exe
+      shell: cmd
