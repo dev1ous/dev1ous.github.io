@@ -21,7 +21,7 @@
  * example, the factorial of 5 is 5 * 4 * 3 * 2 * 1 = 120.
  * This function uses recursion to compute the factorial.
  *
- *  @example cours_test.cpp
+ * @example cours_test.cpp
  *
  * @usage
  * int result = factorial(5); // result will be 120
