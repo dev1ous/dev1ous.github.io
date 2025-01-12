@@ -1,0 +1,14 @@
+
+
+- name: Setup up Conan
+      run: | 
+        python -m pip install --upgrade pip 
+        pip install conan
+
+    - name: Set up Conan profile
+      run: |
+          conan profile detect
+
+    - name: Install dependencies with Conan
+      run: | 
+        conan install . --build=missing
