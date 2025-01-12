@@ -42,12 +42,6 @@ jobs:
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-    - name: List build directory
-      run: |
-        dir ${{github.workspace}}/build
-        dir ${{github.workspace}}/build/Release
-      shell: cmd
-
     - name: Run
       working-directory: ${{github.workspace}}/build/src/${{env.BUILD_TYPE}}
       run: .\cours_test.exe
