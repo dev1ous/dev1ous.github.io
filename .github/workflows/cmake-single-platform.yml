@@ -49,6 +49,6 @@ jobs:
       shell: cmd
 
     - name: Run
-      working-directory: ${{github.workspace}}/build
+      working-directory: ${{github.workspace}}/build/src/${{env.BUILD_TYPE}}
       run: .\cours_test.exe
       shell: cmd
