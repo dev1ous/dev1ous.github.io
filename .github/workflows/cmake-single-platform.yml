@@ -42,7 +42,13 @@ jobs:
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
+    - name: List build directory
+      run: |
+        dir ${{github.workspace}}/build
+        dir ${{github.workspace}}/build/Release
+      shell: cmd
+
     - name: Run
-      working-directory: ${{github.workspace}}/build/${{env.BUILD_TYPE}}
+      working-directory: ${{github.workspace}}/build
       run: .\cours_test.exe
       shell: cmd
