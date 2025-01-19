@@ -19,15 +19,23 @@ project("cours_test")
 add_subdirectory(src)
 
 option(BUILD_DOC "Build documentation" ON)
-
 find_package(Doxygen REQUIRED)
 
-if(DOXYGEN_FOUND)
-    add_custom_target(docs ALL
-        COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+if(BUILD_DOC)
+    set(DOXYGEN_PROJECT_NAME ${PROJECT_NAME})
+    set(DOXYGEN_PROJECT_BRIEF "A test project with factorial calculation")
+    set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/docs)
+    set(DOXYGEN_GENERATE_HTML YES)
+    set(DOXYGEN_EXTRACT_ALL YES)
+    
+    set(DOXYGEN_INPUT_DIRS 
+        ${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/src
+    )
+    
+    doxygen_add_docs(docs
+        ${DOXYGEN_INPUT_DIRS}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
         COMMENT "Generating documentation with Doxygen"
-        VERBATIM)
-else()
-    message(FATAL_ERROR "Doxygen is needed to build the documentation. Please install it first.")
+    )
 endif()
