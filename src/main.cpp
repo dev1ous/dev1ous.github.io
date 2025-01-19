@@ -1,6 +1,8 @@
 ﻿#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
+#include "cours_test.h"
+
 int main()
 {
     // Create the main window
