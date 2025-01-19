@@ -1,14 +1,20 @@
 find_package(SFML COMPONENTS system window graphics audio CONFIG REQUIRED)
 
-file(GLOB SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
+add_library(cours_test
+    cours_test.cpp
+    ${CMAKE_SOURCE_DIR}/include/cours_test.h
+)
 
-add_executable (${PROJECT_NAME} ${SRC_DIR})
-
-target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
-target_include_directories(${PROJECT_NAME} PUBLIC
+target_include_directories(cours_test PUBLIC 
     ${CMAKE_SOURCE_DIR}/include
 )
-target_link_libraries(${PROJECT_NAME} PRIVATE
+
+add_executable (${PROJECT_NAME} main.cpp)
+
+target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    cours_test
     sfml-audio
     sfml-system
     sfml-graphics
