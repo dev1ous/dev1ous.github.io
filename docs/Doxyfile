@@ -7,7 +7,7 @@ PROJECT_BRIEF        = "A C++ project demonstrating factorial calculation"
 OUTPUT_DIRECTORY      = doc
 
 # Input files
-INPUT                 = ../src
+INPUT                 = ../include ../src
 FILE_PATTERNS         = *.h *.cpp
 RECURSIVE             = YES
 EXTRACT_ALL           = YES
