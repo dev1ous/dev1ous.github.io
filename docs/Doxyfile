@@ -1,10 +1,10 @@
 # Doxyfile
 
 # Project information
-PROJECT_NAME           = "cours_test"
+PROJECT_NAME          = "cours_test"
 PROJECT_NUMBER        = 1.0
-PROJECT_BRIEF        = "A C++ project demonstrating factorial calculation"
-OUTPUT_DIRECTORY      = doc
+PROJECT_BRIEF         = "A C++ project demonstrating factorial calculation"
+OUTPUT_DIRECTORY      = .
 
 # Input files
 INPUT                 = ../include ../src
@@ -18,7 +18,7 @@ EXTRACT_STATIC        = YES
 GENERATE_HTML         = YES
 GENERATE_LATEX        = NO
 HTML_OUTPUT           = html
-HTML_FILE_EXTENSION  = .html
+HTML_FILE_EXTENSION   = .html
 
 # Diagrams and graphs
 HAVE_DOT             = YES
